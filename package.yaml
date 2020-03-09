@@ -1,0 +1,57 @@
+name:                chat
+version:             0.1.0.0
+github:              "KacperFKorban/chat"
+license:             BSD3
+author:              "Kacper Korban"
+maintainer:          "kacper.f.korban@gmail.com"
+copyright:           "Copyright: (c) 2020 Kacper Korban"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/KacperFKorban/chat#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- network
+- lens
+- stm
+- mtl
+- lifted-base
+- bytestring
+- text
+- errors
+- network-multicast
+
+library:
+  source-dirs: src
+
+executables:
+  chat-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - chat
+
+tests:
+  chat-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - chat
